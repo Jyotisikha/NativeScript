@@ -1,5 +1,6 @@
 import * as Application from '../application';
 import { Trace } from '../trace';
+import type { ViewBase } from '../ui/core/view-base';
 import type { View } from '../ui/core/view';
 import { GestureTypes } from '../ui/gestures';
 import { notifyAccessibilityFocusState } from './accessibility-common';
@@ -437,8 +438,8 @@ export function isAccessibilityServiceEnabled(): boolean {
 	return accessibilityServiceEnabled;
 }
 
-export function setupAccessibleView(view: Partial<View>): void {
-	updateAccessibilityProperties(view);
+export function setupAccessibleView(view: Partial<ViewBase>): void {
+	updateAccessibilityProperties(<View>view);
 }
 
 export function updateAccessibilityProperties(view: Partial<View>): void {
