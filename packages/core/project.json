@@ -34,22 +34,6 @@
 				"cwd": ".",
 				"parallel": false
 			}
-		},
-		"unit": {
-			"executor": "@nrwl/workspace:run-commands",
-			"options": {
-				"commands": ["../../../node_modules/.bin/tsc -p tsconfig.json && ../../../node_modules/.bin/mocha --config=.mocharc.yml"],
-				"cwd": "packages/core/__tests__",
-				"parallel": false
-			}
-		},
-		"unit.watch": {
-			"executor": "@nrwl/workspace:run-commands",
-			"options": {
-				"commands": ["../../../node_modules/.bin/tsc -p tsconfig.json && ../../../node_modules/.bin/mocha --watch --config=.mocharc.yml"],
-				"cwd": "packages/core/__tests__",
-				"parallel": false
-			}
 		}
 	}
 }
