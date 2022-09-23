@@ -3,7 +3,7 @@ import { dispatchToMainThread, dispatchToUIThread, isMainThread } from './mainth
 import { sanitizeModuleName } from '../ui/builder/module-name-sanitizer';
 import * as layout from './layout-helper';
 
-import { GC } from './index';
+import { GC } from '.';
 
 export { layout };
 export * from './mainthread-helper';

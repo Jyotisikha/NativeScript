@@ -4,7 +4,7 @@ import { Style } from '../styling/style';
 import { Transformation, TransformationValue, TransformFunctionsInfo } from '../animation';
 
 import { Color } from '../../color';
-import { Font, parseFont, FontStyle, FontWeight } from '../../ui/styling/font';
+import { Font, parseFont, FontStyle, FontStyleType, FontWeight, FontWeightType } from '../../ui/styling/font';
 import { layout, hasDuplicates } from '../../utils';
 import { Background } from '../../ui/styling/background';
 
@@ -1362,7 +1362,7 @@ export const fontSizeProperty = new InheritedCssProperty<Style, number>({
 });
 fontSizeProperty.register(Style);
 
-export const fontStyleProperty = new InheritedCssProperty<Style, FontStyle>({
+export const fontStyleProperty = new InheritedCssProperty<Style, FontStyleType>({
 	name: 'fontStyle',
 	cssName: 'font-style',
 	affectsLayout: global.isIOS,
@@ -1378,7 +1378,7 @@ export const fontStyleProperty = new InheritedCssProperty<Style, FontStyle>({
 });
 fontStyleProperty.register(Style);
 
-export const fontWeightProperty = new InheritedCssProperty<Style, FontWeight>({
+export const fontWeightProperty = new InheritedCssProperty<Style, FontWeightType>({
 	name: 'fontWeight',
 	cssName: 'font-weight',
 	affectsLayout: global.isIOS,
