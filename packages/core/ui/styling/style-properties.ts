@@ -193,7 +193,7 @@ export const minWidthProperty = new CssProperty<Style, CoreTypes.LengthType>({
 	affectsLayout: global.isIOS,
 	equalityComparer: Length.equals,
 	valueChanged: (target, oldValue, newValue) => {
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectiveMinWidth = Length.toDevicePixels(newValue, 0);
 		} else {
@@ -211,7 +211,7 @@ export const minHeightProperty = new CssProperty<Style, CoreTypes.LengthType>({
 	affectsLayout: global.isIOS,
 	equalityComparer: Length.equals,
 	valueChanged: (target, oldValue, newValue) => {
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectiveMinHeight = Length.toDevicePixels(newValue, 0);
 		} else {
@@ -231,7 +231,7 @@ export const widthProperty = new CssAnimationProperty<Style, CoreTypes.PercentLe
 	//       on the animation property, so fake it here. x_x
 	valueChanged: (target, oldValue, newValue) => {
 		if (global.isIOS) {
-			const view = target.viewRef.get();
+			const view = target.viewRef.deref();
 			if (view) {
 				view.requestLayout();
 			}
@@ -250,7 +250,7 @@ export const heightProperty = new CssAnimationProperty<Style, CoreTypes.PercentL
 	//       on the animation property, so fake it here. -_-
 	valueChanged: (target, oldValue, newValue) => {
 		if (global.isIOS) {
-			const view = target.viewRef.get();
+			const view = target.viewRef.deref();
 			if (view) {
 				view.requestLayout();
 			}
@@ -335,7 +335,7 @@ export const paddingLeftProperty = new CssProperty<Style, CoreTypes.LengthType>(
 	affectsLayout: global.isIOS,
 	equalityComparer: Length.equals,
 	valueChanged: (target, oldValue, newValue) => {
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectivePaddingLeft = Length.toDevicePixels(newValue, 0);
 		} else {
@@ -353,7 +353,7 @@ export const paddingRightProperty = new CssProperty<Style, CoreTypes.LengthType>
 	affectsLayout: global.isIOS,
 	equalityComparer: Length.equals,
 	valueChanged: (target, oldValue, newValue) => {
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectivePaddingRight = Length.toDevicePixels(newValue, 0);
 		} else {
@@ -371,7 +371,7 @@ export const paddingTopProperty = new CssProperty<Style, CoreTypes.LengthType>({
 	affectsLayout: global.isIOS,
 	equalityComparer: Length.equals,
 	valueChanged: (target, oldValue, newValue) => {
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectivePaddingTop = Length.toDevicePixels(newValue, 0);
 		} else {
@@ -389,7 +389,7 @@ export const paddingBottomProperty = new CssProperty<Style, CoreTypes.LengthType
 	affectsLayout: global.isIOS,
 	equalityComparer: Length.equals,
 	valueChanged: (target, oldValue, newValue) => {
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectivePaddingBottom = Length.toDevicePixels(newValue, 0);
 		} else {
@@ -1042,7 +1042,7 @@ export const borderTopWidthProperty = new CssProperty<Style, CoreTypes.LengthTyp
 			throw new Error(`border-top-width should be Non-Negative Finite number. Value: ${value}`);
 		}
 
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectiveBorderTopWidth = value;
 		} else {
@@ -1066,7 +1066,7 @@ export const borderRightWidthProperty = new CssProperty<Style, CoreTypes.LengthT
 			throw new Error(`border-right-width should be Non-Negative Finite number. Value: ${value}`);
 		}
 
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectiveBorderRightWidth = value;
 		} else {
@@ -1090,7 +1090,7 @@ export const borderBottomWidthProperty = new CssProperty<Style, CoreTypes.Length
 			throw new Error(`border-bottom-width should be Non-Negative Finite number. Value: ${value}`);
 		}
 
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectiveBorderBottomWidth = value;
 		} else {
@@ -1114,7 +1114,7 @@ export const borderLeftWidthProperty = new CssProperty<Style, CoreTypes.LengthTy
 			throw new Error(`border-left-width should be Non-Negative Finite number. Value: ${value}`);
 		}
 
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.effectiveBorderLeftWidth = value;
 		} else {
@@ -1430,7 +1430,7 @@ export const visibilityProperty = new CssProperty<Style, CoreTypes.VisibilityTyp
 	affectsLayout: global.isIOS,
 	valueConverter: CoreTypes.Visibility.parse,
 	valueChanged: (target, oldValue, newValue) => {
-		const view = target.viewRef.get();
+		const view = target.viewRef.deref();
 		if (view) {
 			view.isCollapsed = newValue === CoreTypes.Visibility.collapse;
 		} else {
